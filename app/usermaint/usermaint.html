@@ -1,0 +1,18 @@
+<div layout="column" class="widget-grid widget-grid-edit panel-nobox" flex ng-controller="userMaint as vm">
+    <header>
+        <div layout="row" flex layout-align="start center">
+            <span>Users</span>
+            <md-button class="md-raised md-primary widget-button" ng-click="vm.userAdd()">Add</md-button>
+            <md-button class="md-raised widget-button" ng-click="vm.update()"><i class="mdicon save"></i> Save</md-button>
+            <!--<md-button class="md-raised widget-button" ng-click="vm.test()">Test</md-button>-->
+            <span flex></span>
+            <!--<span>Rows: {{vm.userGrid.gridApi.totalCount()}}</span>-->
+            <span>Rows: {{vm.userGrid.api.records.length}}</span>
+        </div>
+    </header>
+    <div id="umgrid01" ng-style="{height: vm.gHeight}"></div>
+    <!--<div ag-grid="vm.userGrid" class="ag-fresh" ng-style="{height: vm.gHeight}"></div>-->
+    <!--<div dx-data-grid="vm.userGrid" class="mdx-datagrid"></div>-->
+    <!--<div ui-grid="vm.userGrid" style="min-height: 200px" ng-style="{height: vm.gHeight}"-->
+         <!--ui-grid-resize-columns ui-grid-auto-resize ui-grid-edit ui-grid-cellNav ui-grid-selection></div>-->
+</div>

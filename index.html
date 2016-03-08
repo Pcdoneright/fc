@@ -1,0 +1,151 @@
+﻿<!doctype html>
+<html ng-app="app">
+<!--<html>-->
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
+    <!--<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />-->
+    <title>PCDONERIGHT.COM POS</title>
+
+    <link rel="stylesheet" href="master/w2ui/w2ui-1.4.3.min.css"/> <!-- Must be first -->
+    <link rel="stylesheet" href="master/angular-material/angular-material.min.css"/>
+    <link rel="stylesheet" href="master/angular-toastr/angular-toastr.min.css"/>
+    <link rel="stylesheet" href="master/MDicons/css/MDicon.min.css">
+    <link rel="stylesheet" href="master/bg-splitter-master/style.css"/>
+
+    <link rel="stylesheet" href="master/ag-grid/ag-grid.css">
+    <link rel="stylesheet" href="master/ag-grid/theme-fresh.css">
+
+    <link rel="stylesheet" href="master/devex/dx.common.css"/>
+    <link rel="stylesheet" href="master/devex/dx.light.css"/>
+    <!--<link rel="stylesheet" href="master/jqwidgets/jqx.base.css"/>-->
+    <!--<link rel="stylesheet" href="master/jqwidgets/jqx.classic.css"/>-->
+
+    <link rel="stylesheet" href="app/css/style.css"/>
+    <link rel="stylesheet" href="app/css/theme-fresh.css"/>
+    <link rel="stylesheet" href="app/css/w2ui.css"/>
+
+    <!--<link rel="stylesheet" href="master/kendo/kendo.common.min.css"/>-->
+    <!--<link rel="stylesheet" href="master/kendo/kendo.default.min.css"/>-->
+
+    <!--Angular 1.X Libs-->
+    <script src="master/jquery/jquery-2.1.4.min.js"></script>
+    <script src="master/angular/angular.min.js"></script>
+    <script src="master/angular-route/angular-route.min.js"></script>
+    <script src="master/angular-toastr/angular-toastr.min.js"></script>
+    <!--Material Design Related-->
+    <script src="master/angular-messages/angular-messages.min.js"></script>
+    <script src="master/angular-aria/angular-aria.min.js"></script>
+    <script src="master/angular-animate/angular-animate.min.js"></script>
+    <script src="master/hammerjs/hammer.min.js"></script>
+    <script src="master/angular-material/angular-material.min.js"></script>
+    <!--DevExpress-->
+    <script src="master/angular-sanitize/angular-sanitize.min.js"></script>
+    <script src="master/devex/globalize.min.js"></script>
+    <script src="master/devex/dx.all.js"></script>
+    <script src="master/devex/jszip.min.js"></script>
+    <!--W2UI-->
+    <script src="master/w2ui/w2ui-1.4.3.min.js"></script>
+
+    <!--<script src="master/jqwidgets/jqxcore.js"></script>-->
+    <!--<script src="master/jqwidgets/jqxgrid.js"></script>-->
+    <!--<script src="master/jqwidgets/jqxgrid.selection.js"></script>-->
+    <!--<script src="master/jqwidgets/jqxgrid.columnsresize.js"></script>-->
+    <!--<script src="master/jqwidgets/jqxgrid.columnsreorder.js"></script>-->
+    <!--<script src="master/jqwidgets/jqxgrid.edit.js"></script>-->
+    <!--<script src="master/jqwidgets/jqxdata.js"></script>-->
+    <!--<script src="master/jqwidgets/jqxscrollbar.js"></script>-->
+    <!--<script src="master/jqwidgets/jqxbuttons.js"></script>-->
+    <!--<script src="master/jqwidgets/jqxangular.js"></script>-->
+    <!--<script src="master/kendo/kendo.all.min.js"></script>-->
+
+    <!--<script src="master/other_components/ng-signature/signature_pad.js"></script>-->
+    <!--<script src="master/other_components/ng-signature/ng-signature-pad.min.js"></script>-->
+    <script src="master/bg-splitter-master/splitter.js"></script>
+    <script src="master/ag-grid/ag-grid.min.noStyle.js"></script>
+
+    <!--<script src="master/registerjs/register.js"></script>-->
+
+    <!--Debug-->
+    <!--<script src="master/ng-stats/ng-stats.min.js"></script>-->
+
+    <!--JQuery Libs-->
+    <!--<script src="master/bower_components/Flot/jquery.flot.js"></script>-->
+    <!--<script src="master/bower_components/Flot/jquery.flot.categories.js"></script>-->
+    <!--<script src="master/bower_components/Flot/jquery.flot.resize.js"></script>-->
+    <!--<script src="master/other_components/flot.tooltip/js/jquery.flot.tooltip.min.js"></script>-->
+    <!--<script src="master/other_components/flot-spline/js/jquery.flot.spline.min.js"></script>-->
+    <script src="master/moment/moment-with-locales.min.js"></script>
+
+    <!-- Application -->
+    <!--<script src="app/app.js"></script>-->
+    <!--<script src="app/services/extend.js"></script> &lt;!&ndash; Angular Extension/Overrides  &ndash;&gt;-->
+    <!--<script src="app/services/CompanyServices.js"></script>-->
+    <!--<script src="app/services/DataEntrySvc.js"></script>-->
+    <!--<script src="app/services/dxHelperSvc.js"></script>-->
+    <!--<script src="app/services/agGridHelperSvc.js"></script>-->
+    <!--<script src="app/services/w2uiHelper.js"></script>-->
+    <!--<script src="app/services/CompanyRules.js"></script>-->
+    <!--<script src="app/company/login/login.js"></script>-->
+    <!--<script src="app/company/mainmenu/mainmenu.js"></script>-->
+    <!--<script src="app/company/programrights/programrights.js"></script>-->
+    <!--<script src="app/divisionmaint/divisionmaint.js"></script>-->
+    <!--<script src="app/codemaintenance/codemaintenance.js"></script>-->
+    <!--<script src="app/usermaint/usermaint.js"></script>-->
+    <!--<script src="app/contractormaint/contractormaint.js"></script>-->
+
+    <!--Test Only-->
+    <!--<script src="app/test/test.js"></script>-->
+
+    <!--Deployment-->
+    <script src="deploy/app.min.js"></script>
+    <script src="deploy/services/extend.min.js"></script> <!-- Angular Extension/Overrides  -->
+    <script src="deploy/services/CompanyServices.min.js"></script>
+    <script src="deploy/services/DataEntrySvc.min.js"></script>
+    <script src="deploy/services/dxHelperSvc.min.js"></script>
+    <script src="deploy/services/agGridHelperSvc.min.js"></script>
+    <script src="deploy/services/w2uiHelper.min.js"></script>
+    <script src="deploy/services/CompanyRules.min.js"></script>
+    <script src="deploy/company/login/login.min.js"></script>
+    <script src="deploy/company/mainmenu/mainmenu.min.js"></script>
+    <script src="deploy/company/programrights/programrights.min.js"></script>
+    <script src="deploy/divisionmaint/divisionmaint.min.js"></script>
+    <script src="deploy/codemaintenance/codemaintenance.min.js"></script>
+    <script src="deploy/usermaint/usermaint.min.js"></script>
+    <script src="deploy/contractormaint/contractormaint.min.js"></script>
+
+    <script>
+        // Disable Backspace
+        document.onkeydown = function (event) {
+
+            if (!event) { /* This will happen in IE */
+                event = window.event;
+            }
+
+            var keyCode = event.keyCode;
+
+            if (keyCode == 8 &&
+                    ((event.target || event.srcElement).tagName != "TEXTAREA") &&
+                    ((event.target || event.srcElement).tagName != "INPUT")) {
+
+                if (navigator.userAgent.toLowerCase().indexOf("msie") == -1) {
+                    event.stopPropagation();
+                } else {
+                    alert("prevented");
+                    event.returnValue = false;
+                }
+
+                return false;
+            }
+        };
+    </script>
+</head>
+<body layout="column">
+<!--Hour Glass-->
+<div id="myHourGlass" ng-if="hourGlassLoading">
+    <md-progress-circular class="hourGlass-loader md-accent" md-mode="indeterminate"></md-progress-circular>
+</div>
+<!--Main View-->
+<ng-view flex layout="column"></ng-view>
+</body>
+</html>

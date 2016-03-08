@@ -1,0 +1,232 @@
+<div flex layout="column" class="panel-nobox" ng-controller="contractormaint as vm">
+    <md-tabs flex md-no-bar md-no-pagination md-no-ink md-selected="vm.selectedTab">
+        <md-tab Xlabel="List">
+            <md-tab-body>
+                <!--Customer List Grid-->
+                <div layout="column" class="widget-grid">
+                    <header>
+                        <div layout="row" flex layout-align="start center">
+                            <span>Contractor List</span>
+                            <md-button
+                                    ng-click="vm.retrieve(vm.listGrid.api.getSelectedRows()[0].fcid); vm.selectedTab = 1;"
+                                    aria-label="Edit Selection" class="md-raised widget-button green-color"
+                                    style="margin-left: 20px;color:#fff">Edit
+                            </md-button>
+                            <span flex></span>
+                            <md-button class="md-raised widget-button-tab widget-button" ng-click="vm.selectedTab = 1">
+                                Entry
+                            </md-button>
+                            <span>Rows: {{vm.listGrid.rowData.length}}</span>
+                        </div>
+                    </header>
+                    <!--Customer List Options-->
+                    <nav layout="column" style="height: 55px;">
+                        <div layout="row" layout-align="start center">
+                            <div class="m-input-container" flex>
+                                <select ng-model="vm.fdid" style="background-color: transparent"
+                                        ng-options="opt.fdid as opt.cfdescription for opt in vm.lDivisions"
+                                        ng-change="vm.onChangeDivision('division')"
+                                        placeholder="Divisions">
+                                </select>
+                                <label>Division:</label>
+                            </div>
+                            <div class="m-input-container" flex>
+                                <select ng-model="vm.fsmjid" style="background-color: transparent"
+                                        ng-options="opt.fsmjid as opt.cfdescription for opt in vm.lSubmajors"
+                                        ng-change="vm.onChangeDivision('submajor')"
+                                        placeholder="Divisions">
+                                </select>
+                                <label>Sub-Division:</label>
+                            </div>
+                            <div class="m-input-container" flex>
+                                <select ng-model="vm.fsmnid" style="background-color: transparent"
+                                        ng-options="opt.fsmnid as opt.cfdescription for opt in vm.lSubminors"
+                                        placeholder="Divisions">
+                                </select>
+                                <label>Sub-Minor:</label>
+                            </div>
+                            <md-button ng-click="vm.listGridRefresh()"
+                                       aria-label="Refresh"
+                                       class="md-raised md-primary widget-button-icon Xwidget-button"
+                                       style="margin-left: 10px">
+                                <i class="mdicon search"></i>
+                            </md-button>
+                        </div>
+                    </nav>
+                    <div ag-grid="vm.listGrid" class="ag-fresh" ng-style="{height: vm.g1H}"></div>
+                </div>
+            </md-tab-body>
+        </md-tab>
+        <md-tab>
+            <md-tab-body>
+                <div layout="column" class="widget-grid widget-grid-edit panel-form">
+                    <header>
+                        <div layout="row" flex layout-align="start center">
+                            <span>Properties</span>
+                            <md-button class="md-raised md-primary widget-button" ng-click="vm.update()">Save
+                            </md-button>
+                            <md-button class="md-raised widget-button" ng-click="vm.createContractor()">New Contractor
+                            </md-button>
+                            <span ng-if="!vm.validEntry()" class="widget-error"
+                                  style="padding-left: 30px">NO CHANGES CAN BE SAVED</span>
+                            <span flex></span>
+                            <md-button class="md-raised widget-button-tab widget-button" ng-click="vm.selectedTab = 0">List</md-button>
+                        </div>
+                    </header>
+                    <nav layout="row" layout-align="start center">
+                        <md-input-container md-no-float>
+                            <input type='text' ng-model="vm.fcid" ng-model-options="{updateOn: 'blur'}"
+                                   ng-change="vm.retrieve(vm.fcid); vm.fcid = ''"
+                                   placeholder="Contractor ID" style="width: 100px"/>
+                        </md-input-container>
+                        <md-button Xng-click="vm.searchNumber()" aria-label="Find"
+                                   class="md-raised md-primary widget-button-icon widget-button">
+                            <i class="mdicon search"></i>
+                        </md-button>
+                    </nav>
+                    <form layout="row">
+                        <div flex>
+                            <div layout="row" layout-align="center end">
+                                <div class="m-input-container" style="width: 70px;">
+                                    <input type='text' ng-model="vm.contractors.items[0].fcid" disabled/>
+                                    <label>ID</label>
+                                </div>
+                                <div class="m-input-container" flex>
+                                    <input id="fname" type='text' ng-model="vm.contractors.items[0].fname"/>
+                                    <label>Name</label>
+                                </div>
+                                <md-checkbox ng-model="vm.contractors.items[0].factive" aria-label="Active" flex="25">
+                                    Active
+                                </md-checkbox>
+                            </div>
+
+                            <div layout="row">
+                                <div class="m-input-container" flex>
+                                    <select ng-model="vm.contractors.items[0].ftype"
+                                            ng-options="opt.fid as opt.fdescription for opt in vm.ctypes"
+                                            placeholder="Price Class" ng-model-options="{updateOn: 'blur'}">
+                                    </select>
+                                    <label>Type</label>
+                                </div>
+                                <div class="m-input-container" flex>
+                                    <input type="text" ng-model="vm.contractors.items[0].fphone"
+                                           ng-model-options="{updateOn: 'blur'}" phone-number/>
+                                    <label>Phone</label>
+                                </div>
+                                <div class="m-input-container" flex>
+                                    <input type="text" ng-model="vm.contractors.items[0].ffax"
+                                           ng-model-options="{updateOn: 'blur'}" phone-number/>
+                                    <label>Fax</label>
+                                </div>
+                            </div>
+
+                            <div layout="row">
+                                <div class="m-input-container" flex>
+                                    <input type="text" ng-model="vm.contractors.items[0].faddress1"
+                                           ng-model-options="{updateOn: 'blur'}"/>
+                                    <label>Address</label>
+                                </div>
+                                <div class="m-input-container" flex>
+                                    <input type="text" ng-model="vm.contractors.items[0].faddress2"
+                                           ng-model-options="{updateOn: 'blur'}"/>
+                                    <label>Address 2</label>
+                                </div>
+                            </div>
+
+                            <div layout="row">
+                                <div class="m-input-container" flex>
+                                    <input type="text" ng-model="vm.contractors.items[0].fcity"
+                                           ng-model-options="{updateOn: 'blur'}"/>
+                                    <label>City</label>
+                                </div>
+                                <div class="m-input-container" flex>
+                                    <input type="text" ng-model="vm.contractors.items[0].fstate"
+                                           ng-model-options="{updateOn: 'blur'}"/>
+                                    <label>State</label>
+                                </div>
+                                <div class="m-input-container" flex>
+                                    <input type="text" ng-model="vm.contractors.items[0].fzip"
+                                           ng-model-options="{updateOn: 'blur'}"/>
+                                    <label>Zip Code</label>
+                                </div>
+                            </div>
+
+
+                            <div layout="row">
+                                <div class="m-input-container" flex>
+                                    <input type="text" ng-model="vm.contractors.items[0].fnotes"
+                                           ng-model-options="{updateOn: 'blur'}"/>
+                                    <label>Notes</label>
+                                </div>
+                                <div class="m-input-container" flex=30>
+                                    <input type='text'
+                                           value="{{vm.contractors.items[0].ts | date:'yyyy/MM/dd h:mm a'}} {{vm.contractors.items[0].fby}}"
+                                           disabled/>
+                                    <label>Last Update</label>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+                <md-tabs flex md-no-bar md-no-pagination md-no-ink md-selected="vm.selectedTab02" md-dynamic-height>
+                    <md-tab>
+                        <md-tab-body>
+                            <div layout="column" class="widget-grid widget-grid-edit panel-nobox" flex>
+                                <header>
+                                    <div layout="row" flex layout-align="start center">
+                                        <span>Contacts</span>
+                                        <md-button class="md-raised md-primary widget-button" ng-click="vm.contactsAdd()">Add</md-button>
+                                        <md-button class="md-raised md-warn widget-button" ng-click="vm.contactsRemove($event)">Remove</md-button>
+                                        <span flex></span>
+                                        <md-button class="md-raised widget-button-tab widget-button" ng-click="vm.selectedTab02 = 1">Divisions</md-button>
+                                        <md-button class="md-raised widget-button-tab widget-button" ng-click="vm.selectedTab02 = 2">Logs</md-button>
+                                        <span>Rows: {{vm.contractorcontacts.items.length}}</span>
+                                    </div>
+                                </header>
+                                <div id="cmg01" ng-style="{height: vm.g2H}"></div>
+                            </div>
+                        </md-tab-body>
+                    </md-tab>
+                    <md-tab>
+                        <md-tab-body>
+                            <div layout="column" class="widget-grid widget-grid-edit panel-nobox" flex>
+                                <header>
+                                    <div layout="row" flex layout-align="start center">
+                                        <span>Divisions</span>
+                                        <md-button class="md-raised md-primary widget-button" ng-click="vm.divisionsAdd()">Add</md-button>
+                                        <md-button class="md-raised md-warn widget-button" ng-click="vm.divisionsRemove($event)">Remove</md-button>
+                                        <span flex></span>
+                                        <md-button class="md-raised widget-button-tab widget-button" ng-click="vm.selectedTab02 = 0">Contacts</md-button>
+                                        <md-button class="md-raised widget-button-tab widget-button" ng-click="vm.selectedTab02 = 2">Logs</md-button>
+                                        <span>Rows: {{vm.contractordivisions.items.length}}</span>
+                                    </div>
+                                </header>
+                                <div id="cmg02" ng-style="{height: vm.g2H}"></div>
+                            </div>
+                        </md-tab-body>
+                    </md-tab>
+                    <md-tab>
+                        <md-tab-body>
+                            <div layout="column" class="widget-grid widget-grid-edit panel-nobox" flex>
+                                <header>
+                                    <div layout="row" flex layout-align="start center">
+                                        <span>Logs</span>
+                                        <md-button class="md-raised md-primary widget-button" ng-click="vm.logsAdd()">Add</md-button>
+                                        <md-button class="md-raised md-warn widget-button" ng-click="vm.logsRemove($event)">Remove</md-button>
+                                        <span flex></span>
+                                        <md-button class="md-raised widget-button-tab widget-button" ng-click="vm.selectedTab02 = 0">Contacts</md-button>
+                                        <md-button class="md-raised widget-button-tab widget-button" ng-click="vm.selectedTab02 = 1">Divisions</md-button>
+                                        <span>Rows: {{vm.contractorslog.items.length}}</span>
+                                    </div>
+                                </header>
+                                <div id="cmg03" ng-style="{height: vm.g2H}"></div>
+                            </div>
+                        </md-tab-body>
+                    </md-tab>
+                </md-tabs>
+
+            </md-tab-body>
+        </md-tab>
+    </md-tabs>
+</div>

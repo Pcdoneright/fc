@@ -1,0 +1,68 @@
+.w2ui-grid .w2ui-grid-body .w2ui-grid-records table tr.w2ui-selected, .w2ui-grid .w2ui-grid-body .w2ui-grid-records table tr td.w2ui-selected {
+    background-color: #606060 !important;
+    color: #f6f6f6!important;
+}
+
+.w2ui-reset table {
+    font-family: 'Helvetica Neue','Segoe UI',Helvetica,Verdana,sans-serif;
+    font-size: 14px;
+}
+
+.w2ui-grid .w2ui-grid-body table td.w2ui-grid-data {
+    margin-left: 7px;
+}
+
+.w2ui-grid .w2ui-grid-body table td.w2ui-grid-data>div {
+    margin-left: 7px;
+}
+
+.w2ui-grid .w2ui-grid-body div.w2ui-col-header {
+    /*height: 30px!important;*/
+    padding: 7px!important;
+}
+.w2ui-grid .w2ui-grid-body table .w2ui-head>div {
+    color: #767676;
+    font-weight: bold;
+}
+
+.w2ui-grid .w2ui-grid-body table .w2ui-head {
+    background: #f6f6f6 none;
+    border-bottom: 1px solid #d3d3d3;
+}
+
+.w2ui-grid .w2ui-grid-body div.w2ui-col-header > div.w2ui-sort-up {
+    margin-top: 0;
+    margin-right: 0;
+}
+.w2ui-grid .w2ui-grid-body div.w2ui-col-header > div.w2ui-sort-down {
+    margin-top: 5px;
+    margin-right: 0;
+}
+
+.w2ui-grid .w2ui-grid-body table .w2ui-head.w2ui-reorder-cols-head:hover {
+    cursor: default;
+}
+
+.w2ui-grid .w2ui-editable {
+    padding: 0 1px 0 1px !important;
+}
+
+/*.w2ui-grid .w2ui-grid-body .w2ui-grid-records table tr.w2ui-even {*/
+    /*background-color: #f5f5f5;*/
+/*}*/
+
+/* Prevent Override */
+input:not([type=button]):disabled, select:disabled, textarea:disabled, input:not([type=button])[readonly], select[readonly], textarea[readonly] {
+    background-color: inherit;
+    color: inherit;
+}
+
+/* TODO: Remove hover */
+/*.w2ui-grid .w2ui-grid-body .w2ui-grid-records table tr.w2ui-even:hover {*/
+    /*background-color: inherit!important;*/
+/*}*/
+
+/*.w2ui-grid .w2ui-grid-body .w2ui-grid-records table tr.w2ui-odd:hover {*/
+    /*background-color: inherit!important;*/
+/*}*/
+

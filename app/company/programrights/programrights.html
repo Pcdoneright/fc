@@ -1,0 +1,35 @@
+<div flex layout="column" class="panel-nobox" ng-controller="programrights as vm">
+    <bg-splitter orientation="vertical" min-size="100">
+        <bg-pane min-size="50" id="p1">
+            <!--Salesman List Grid-->
+            <div layout="column" class="widget-grid widget-grid-edit ">
+                <header>
+                    <div layout="row" flex layout-align="start center">
+                        <span>Group Right</span>
+                        <md-button class="md-raised md-primary widget-button" ng-click="vm.groupsAdd()">Add</md-button>
+                        <md-button class="md-raised md-warn widget-button" ng-click="vm.groupsRemove($event)">Remove</md-button>
+                        <md-button class="md-raised widget-button" ng-click="vm.update()"><i class="mdicon save"></i> Save</md-button>
+                        <span flex></span>
+                        <span>Rows: {{vm.groupsGrid.gridApi.totalCount()}}</span>
+                    </div>
+                </header>
+                <div dx-data-grid="vm.groupsGrid" class="mdx-datagrid"></div>
+            </div>
+        </bg-pane>
+        <bg-pane min-size="50" id="p2">
+            <div layout="column" class="widget-grid widget-grid-edit">
+                <header>
+                    <div layout="row" flex layout-align="start center">
+                        <span>Programs</span>
+                        <md-button class="md-raised md-primary widget-button" ng-click="vm.groups_accessAdd()">Add</md-button>
+                        <md-button class="md-raised md-warn widget-button" ng-click="vm.groups_accessRemove($event)">Remove</md-button>
+                        <span flex></span>
+                        <span>Rows: {{vm.groups_accessGrid.gridApi.totalCount()}}</span>
+                    </div>
+                </header>
+                <!--SO List Options-->
+                <div dx-data-grid="vm.groups_accessGrid" class="mdx-datagrid"></div>
+            </div>
+        </bg-pane>
+    </bg-splitter>
+</div>

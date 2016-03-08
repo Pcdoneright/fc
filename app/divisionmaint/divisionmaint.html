@@ -1,0 +1,62 @@
+<div layout="row" ng-controller="divisionmaint as vm">
+    <!--Division Grid-->
+    <div layout="column" flex class="widget-grid widget-grid-edit" style="padding: 5px;">
+        <header>
+            <div layout="row" flex layout-align="start center">
+                <span>Division</span>
+                <md-button class="md-raised widget-button" ng-click="vm.update($event)">
+                    Save
+                </md-button>
+                <md-button class="md-raised md-primary widget-button" ng-click="vm.divisionAdd($event)">
+                    Add
+                </md-button>
+                <md-button class="md-raised md-warn widget-button" ng-click="vm.divisionRemove($event)">
+                    Remove
+                </md-button>
+                <span flex></span>
+                <!--<span>Rows: {{vm.divisions.items.length}}</span>-->
+                <span>Rows: {{vm.divisionsGrid.rowData.length}}</span>
+            </div>
+        </header>
+        <!--<jqx-grid jqx-settings="vm.divisionsGrid.settings" jqx-instance="vm.divisionsGrid.api" ng-style="{height: vm.gH}"></jqx-grid>-->
+        <!--<div dx-data-grid="vm.divisionsGrid" class="mdx-datagrid"></div>-->
+        <div ag-grid="vm.divisionsGrid" class="ag-fresh" ng-style="{height: vm.gH}"></div>
+        <!--<kendo-grid options="vm.divisionsGrid" k-data-source="vm.divisions.items" ng-style="{height: vm.gH}"></kendo-grid>-->
+    </div>
+    <!--Subdivision Grid-->
+    <div layout="column" flex class="widget-grid widget-grid-edit" style="padding-top: 5px;">
+        <header>
+            <div layout="row" flex layout-align="start center">
+                <span>Sub-Division</span>
+                <md-button class="md-raised md-primary widget-button" ng-click="vm.submajorAdd($event)">
+                    Add
+                </md-button>
+                <md-button class="md-raised md-warn widget-button" ng-click="vm.submajorRemove($event)">
+                    Remove
+                </md-button>
+                <span flex></span>
+                <span>Rows: {{vm.submajorsGrid.rowData.length}}</span>
+            </div>
+        </header>
+        <!--<div dx-data-grid="vm.submajorsGrid" class="mdx-datagrid"></div>-->
+        <div ag-grid="vm.submajorsGrid" class="ag-fresh" ng-style="{height: vm.gH}"></div>
+    </div>
+    <!--Minor Grid-->
+    <div layout="column" flex class="widget-grid widget-grid-edit" style="padding: 5px;">
+        <header>
+            <div layout="row" flex layout-align="start center">
+                <span>Minor</span>
+                <md-button class="md-raised md-primary widget-button" ng-click="vm.subminorAdd($event)">
+                    Add
+                </md-button>
+                <md-button class="md-raised md-warn widget-button" ng-click="vm.subminorRemove($event)">
+                    Remove
+                </md-button>
+                <span flex></span>
+                <span>Rows: {{vm.subminorsGrid.rowData.length}}</span>
+            </div>
+        </header>
+        <!--<div dx-data-grid="vm.subminorsGrid" class="mdx-datagrid"></div>-->
+        <div ag-grid="vm.subminorsGrid" class="ag-fresh" ng-style="{height: vm.gH}"></div>
+    </div>
+</div>

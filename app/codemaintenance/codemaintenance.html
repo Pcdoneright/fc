@@ -1,0 +1,34 @@
+<div layout="column" ng-controller="codemaintenance as vm" flex>
+    <bg-splitter orientation="vertical" min-size="100">
+        <bg-pane min-size="50" id="p1">
+            <div layout="column" class="widget-grid widget-grid-edit panel-nobox" flex>
+                <header>
+                    <div layout="row" flex layout-align="start center">
+                        <span>Master</span>
+                        <md-button class="md-raised md-primary widget-button" ng-click="vm.update()"><i
+                                class="mdicon save"></i> Save
+                        </md-button>
+                        <span flex></span>
+                        <span>Rows: {{vm.codemasterGrid.rowData.length}}</span>
+                    </div>
+                </header>
+                <div ag-grid="vm.codemasterGrid" class="ag-fresh" ng-style="{height: vm.g1H}"></div>
+            </div>
+        </bg-pane>
+
+        <bg-pane min-size="50" id='p2'>
+            <div layout="column" class="widget-grid widget-grid-edit panel-nobox" flex>
+                <header>
+                    <div layout="row" flex layout-align="start center">
+                        <span>Details</span>
+                        <md-button class="md-raised md-primary widget-button" ng-click="vm.codeAdd($event)">Add</md-button>
+                        <md-button class="md-raised md-warn widget-button" ng-click="vm.codeRemove($event)">Remove</md-button>
+                        <span flex></span>
+                        <span>Rows: {{vm.codedetailGrid.rowData.length}}</span>
+                    </div>
+                </header>
+                <div ag-grid="vm.codedetailGrid" class="ag-fresh" ng-style="{height: vm.g2H}"></div>
+            </div>
+        </bg-pane>
+    </bg-splitter>
+</div>
